@@ -9,7 +9,7 @@ console.log('script started');
 
 const gpio17 = gpio.export(17, {
   direction: gpio.DIRECTION.IN,
-  interval: 500,
+  interval: 20,
   ready: function () {
     console.log('gpio17 is ready');
     currentState.isReady = true;
