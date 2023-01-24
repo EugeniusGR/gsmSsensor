@@ -5,6 +5,8 @@ let currentState = {
   isAlerted: false,
 };
 
+console.log('script started');
+
 const gpio4 = gpio.export(4, {
   direction: gpio.DIRECTION.IN,
   interval: 500,
