@@ -7,11 +7,11 @@ let currentState = {
 
 console.log('script started');
 
-const gpio4 = gpio.export(4, {
+const gpio4 = gpio.export(17, {
   direction: gpio.DIRECTION.IN,
   interval: 500,
   ready: function () {
-    console.log('gpio4 is ready');
+    console.log('gpio17 is ready');
     currentState.isReady = true;
   },
 });
