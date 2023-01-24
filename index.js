@@ -13,7 +13,7 @@ const gpio4 = gpio.export(4, {
   },
 });
 
-gpio17.on('change', function (val) {
+gpio4.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log('move', val);
 });
