@@ -18,7 +18,7 @@ const gpio17 = gpio.export(17, {
 
 gpio17.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
-  console.log('move', val);
+  console.log(`[${new Date().getTime()}]: moved`, val);
 });
 
 export default (req, res) => {
