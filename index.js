@@ -1,4 +1,7 @@
 import gpio from 'gpio';
+//onst mcpadc = require('mcp-spi-adc');
+import mcpadc from 'mcp-spi-adc';
+
 let currentState = {
   isReady: false,
   isAlerted: false,
@@ -19,19 +22,18 @@ gpio4.on('change', function (val) {
   console.log('move', val);
 });
 
-const gpio17 = gpio.export(17, {
-  direction: gpio.DIRECTION.IN,
-  interval: 20,
-  ready: function () {
-    console.log('gpio17 is ready');
-    currentState.isReady = true;
-  },
-});
+const tempSensor = mcpadc.open(17, { speedHz: 20000 }, (err) => {
+  if (err) throw err;
+  console.log('temp sensor is ready');
 
-gpio17.on('change', function (val) {
-  // value will report either 1 or 0 (number) when the value changes
-  console.log('temperature', val);
-  console.log(val);
+  setInterval((_) => {
+    tempSensor.read((err, reading) => {
+      if (err) throw err;
+
+      console.log(reading);
+      console.log((reading.value * 3.3 - 0.5) * 100);
+    });
+  }, 1000);
 });
 
 export default (req, res) => {
