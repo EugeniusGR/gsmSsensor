@@ -1,33 +1,26 @@
 import gpio from 'gpio';
-
-// v1
-
 let currentState = {
   isReady: false,
   isAlerted: false,
 };
-
 console.log('script started');
 
-const gpio4 = gpio.export(4, {
+const gpio17 = gpio.export(17, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
-    console.log('gpio4 is ready');
+    console.log('gpio17 is ready');
     currentState.isReady = true;
   },
 });
-
-gpio4.on('change', function (val) {
+gpio17.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
-  console.log(`[${new Date().getTime()}]: moved`, val);
+  console.log('move', val);
 });
-
 export default (req, res) => {
   const {
     query: { pinId },
   } = req;
-
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
   res.end(
