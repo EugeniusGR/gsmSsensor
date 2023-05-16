@@ -1,5 +1,7 @@
 import gpio from 'gpio';
 
+// v1
+
 let currentState = {
   isReady: false,
   isAlerted: false,
@@ -7,7 +9,7 @@ let currentState = {
 
 console.log('script started');
 
-const gpio7 = gpio.export(4, {
+const gpio4 = gpio.export(4, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
@@ -16,7 +18,7 @@ const gpio7 = gpio.export(4, {
   },
 });
 
-gpio7.on('change', function (val) {
+gpio4.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log(`[${new Date().getTime()}]: moved`, val);
 });
