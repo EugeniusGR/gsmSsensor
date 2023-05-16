@@ -5,18 +5,20 @@ let currentState = {
 };
 console.log('script started');
 
-const gpio17 = gpio.export(17, {
+const gpio17 = gpio.export(4, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
-    console.log('gpio17 is ready');
+    console.log('gpio4 is ready');
     currentState.isReady = true;
   },
 });
+
 gpio17.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log('move', val);
 });
+
 export default (req, res) => {
   const {
     query: { pinId },
