@@ -19,7 +19,7 @@ gpio4.on('change', function (val) {
   console.log('move', val);
 });
 
-const gpio2 = gpio.export(4, {
+const gpio2 = gpio.export(2, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
