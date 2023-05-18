@@ -1,7 +1,9 @@
 import gpio from 'gpio';
 import { io } from 'socket.io-client';
 
-var socket = io.connect('http://localhost:3006');
+var socket = io.connect('http://localhost:3006', {
+  withCredentials: true,
+});
 
 socket.on('connect', function (data) {
   console.log('Hello World from client');
