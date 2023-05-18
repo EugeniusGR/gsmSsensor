@@ -17,18 +17,18 @@ gpio4.on('change', function (val) {
   console.log('move', val);
 });
 
-const gpio10 = gpio.export(10, {
+const gpio26 = gpio.export(26, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
-    console.log('gpio17 is ready');
+    console.log('gpio26 is ready');
     currentState.isReady = true;
   },
 });
 
-gpio10.on('change', function (val) {
+gpio26.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
-  console.log('temperature', val);
+  console.log('is gas', val);
   console.log(val);
 });
 
