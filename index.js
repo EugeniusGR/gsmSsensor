@@ -1,8 +1,21 @@
 import gpio from 'gpio';
+import { io } from 'socket.io-client';
+
+const socket = io('http://localhost:3006');
+
+socket.on('connect', () => {
+  console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+});
+
 let currentState = {
   isReady: false,
   isAlerted: false,
 };
+
+const sendDataToTheServer = (data) => {};
+
+sendDataToTheServer('works');
+
 console.log('script started');
 const gpio4 = gpio.export(4, {
   direction: gpio.DIRECTION.IN,
@@ -16,32 +29,3 @@ gpio4.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log('move', val);
 });
-
-const gpio26 = gpio.export(26, {
-  direction: gpio.DIRECTION.IN,
-  interval: 20,
-  ready: function () {
-    console.log('gpio26 is ready');
-    currentState.isReady = true;
-  },
-});
-
-gpio26.on('change', function (val) {
-  // value will report either 1 or 0 (number) when the value changes
-  console.log('is gas', val);
-  console.log(val);
-});
-
-export default (req, res) => {
-  const {
-    query: { pinId },
-  } = req;
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'application/json');
-  res.end(
-    JSON.stringify({
-      textMessage: `Pin id passed in query: ${pinId}`,
-      ...currentState,
-    })
-  );
-};
