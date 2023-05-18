@@ -17,7 +17,7 @@ gpio4.on('change', function (val) {
   console.log('move', val);
 });
 
-const gpio17 = gpio.export(17, {
+const gpio10 = gpio.export(10, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
@@ -26,7 +26,7 @@ const gpio17 = gpio.export(17, {
   },
 });
 
-gpio17.on('change', function (val) {
+gpio10.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log('temperature', val);
   console.log(val);
