@@ -1,10 +1,10 @@
 import gpio from 'gpio';
 import { io } from 'socket.io-client';
 
-const socket = io('http://localhost:3006');
+var socket = io.connect('http://localhost');
 
-socket.on('connect', () => {
-  console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+socket.on('connect', function (data) {
+  console.log('Hello World from client');
 });
 
 let currentState = {
