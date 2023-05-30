@@ -73,10 +73,5 @@ gpio26.on('change', function (val) {
 const apiInterval = setInterval(() => {
   if (currentState.isReady.every((item) => item)) {
     console.log(dataToCheck);
-    dataToCheck = {
-      move: 0,
-      sound: 0,
-      gas: 0,
-    };
   }
 }, 1200);
