@@ -35,7 +35,7 @@ gpio4.on('change', function (val) {
 console.log('script started');
 const gpio26 = gpio.export(17, {
   direction: gpio.DIRECTION.IN,
-  interval: 2000,
+  interval: 500,
   ready: function () {
     console.log('gpio17 is ready');
     currentState.isReady = true;
