@@ -31,3 +31,18 @@ gpio4.on('change', function (val) {
   // value will report either 1 or 0 (number) when the value changes
   console.log('move', val);
 });
+
+console.log('script started');
+const gpio26 = gpio.export(26, {
+  direction: gpio.DIRECTION.IN,
+  interval: 20,
+  ready: function () {
+    console.log('gpio26 is ready');
+    currentState.isReady = true;
+  },
+});
+
+gpio26.on('change', function (val) {
+  // value will report either 1 or 0 (number) when the value changes
+  console.log('sound', val);
+});
