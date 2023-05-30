@@ -70,6 +70,23 @@ gpio26.on('change', function (val) {
 const apiInterval = setInterval(() => {
   if (currentState.isReady.every((item) => item)) {
     console.log(dataToCheck);
+    axios
+      .post('/user', {
+        sensorId: 'Hall',
+        temperature: '22.2',
+        isMove: !!dataToCheck.move,
+        isSound: !!dataToCheck.sound,
+        isGus: !!dataToCheck.gas,
+        isOn: true,
+        userId: '646c5342f907bf9e3a7c2820',
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
     dataToCheck = {
       move: 0,
       sound: 0,
