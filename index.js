@@ -33,11 +33,11 @@ gpio4.on('change', function (val) {
 });
 
 console.log('script started');
-const gpio26 = gpio.export(26, {
+const gpio26 = gpio.export(17, {
   direction: gpio.DIRECTION.IN,
   interval: 20,
   ready: function () {
-    console.log('gpio26 is ready');
+    console.log('gpio17 is ready');
     currentState.isReady = true;
   },
 });
